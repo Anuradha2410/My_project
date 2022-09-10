@@ -27,45 +27,37 @@
 
     <RelativeLayout
         android:id="@+id/relativeLayout"
-        android:layout_width="228dp"
-        android:layout_height="411dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:background="#A4FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/guideline21"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.912"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline15"
+        app:layout_constraintTop_toTopOf="@+id/guideline16"
         app:layout_constraintVertical_bias="0.443">
 
         <EditText
             android:id="@+id/editTextTextPersonName3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="39dp"
             android:layout_marginTop="46dp"
-            android:layout_marginEnd="38dp"
             android:ems="10"
 
             android:fontFamily="casual"
             android:hint="Enter Username"
-            android:inputType="textPersonName"
+            android:inputType="textEmailAddress"
             android:minHeight="48dp"
             android:textColor="#101010"
             android:textColorHint="#333030" />
 
         <EditText
             android:id="@+id/editTextTextPassword"
-            android:layout_width="151dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="39dp"
             android:layout_marginTop="112dp"
-            android:layout_marginEnd="38dp"
             android:ems="10"
             android:fontFamily="casual"
             android:hint="Enter Password"
@@ -78,40 +70,62 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:layout_marginBottom="41dp"
-            android:fontFamily="casual"
+            android:layout_marginBottom="48dp"
+            android:fontFamily="@font/abril_fatface"
             android:text="forgot password"
             android:textAlignment="center"
+            android:textColor="#B0040404"
             android:textColorHint="#101010"
-            android:textSize="16sp" />
+            android:textSize="10sp" />
+
+        <TextView
+            android:id="@+id/textView14"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="85dp"
+            android:fontFamily="@font/abril_fatface"
+            android:text="Doesn't have account?Sign up"
+            android:textAlignment="center"
+            android:textColor="#B0040404"
+            android:textColorHint="#101010"
+            android:textSize="10sp" />
 
         <Button
             android:id="@+id/button5"
-            android:layout_width="88dp"
+            android:layout_width="163dp"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
-            android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginStart="71dp"
-            android:layout_marginEnd="88dp"
-            android:layout_marginBottom="170dp"
-            android:backgroundTint="#E4202023"
+            android:layout_marginStart="19dp"
+            android:layout_marginBottom="120dp"
+            android:backgroundTint="#1DFFFFFF"
             android:text="Log in"
-            android:textSize="8sp" />
+            android:textColor="#040404"
+            android:textColorHint="#040404"
+            android:textSize="10sp" />
 
-        <Button
-            android:id="@+id/button6"
-            android:layout_width="88dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginStart="71dp"
-            android:layout_marginEnd="88dp"
-            android:layout_marginBottom="112dp"
-            android:backgroundTint="#E4202023"
-            android:text="Sign up"
-            android:textSize="8sp" />
     </RelativeLayout>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline15"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.44" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.19" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline21"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.75" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

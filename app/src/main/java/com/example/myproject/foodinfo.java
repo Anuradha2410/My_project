@@ -1,16 +1,20 @@
 package com.example.myproject;
 
 public class foodinfo {
-    int image;
+//    int image;
+
+    public foodinfo() {
+    }
+
     String name,price,description;
 
-    public int getImage() {
-        return image;
-    }
-
-    public void setImage(int image) {
-        this.image = image;
-    }
+//    public int getImage() {
+//        return image;
+//    }
+//
+//    public void setImage(int image) {
+//        this.image = image;
+//    }
 
     public String getName() {
         return name;
@@ -36,8 +40,8 @@ public class foodinfo {
         this.description = description;
     }
 
-    public foodinfo(int image, String name, String price, String description) {
-        this.image = image;
+    public foodinfo( String name, String price, String description) {
+//        this.image = image;
         this.name = name;
         this.price = price;
         this.description = description;

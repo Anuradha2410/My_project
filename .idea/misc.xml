@@ -6,12 +6,17 @@
         <entry key="..\:/Users/anura/AndroidStudioProjects/Myproject/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2555" />
         <entry key="..\:/Users/anura/AndroidStudioProjects/Myproject/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2555" />
         <entry key="..\:/Users/anura/AndroidStudioProjects/Myproject/app/src/main/res/layout/activity_account.xml" value="0.264" />
-        <entry key="..\:/Users/anura/AndroidStudioProjects/Myproject/app/src/main/res/layout/activity_main.xml" value="0.264" />
+        <entry key="..\:/Users/anura/AndroidStudioProjects/Myproject/app/src/main/res/layout/activity_main.xml" value="0.4" />
         <entry key="..\:/Users/anura/AndroidStudioProjects/Myproject/app/src/main/res/layout/activity_main2.xml" value="0.25" />
         <entry key="..\:/Users/anura/AndroidStudioProjects/Myproject/app/src/main/res/layout/activity_main_activity2food.xml" value="0.22735507246376813" />
         <entry key="..\:/Users/anura/AndroidStudioProjects/Myproject/app/src/main/res/layout/activity_menu.xml" value="0.1838768115942029" />
         <entry key="..\:/Users/anura/AndroidStudioProjects/Myproject/app/src/main/res/layout/activity_snacks.xml" value="0.25" />
+        <entry key="..\:/Users/anura/AndroidStudioProjects/Myproject/app/src/main/res/layout/activity_splash.xml" value="0.1933876811594203" />
         <entry key="..\:/Users/anura/AndroidStudioProjects/Myproject/app/src/main/res/layout/fooddetails.xml" value="0.25" />
+        <entry key="..\:/Users/anura/AndroidStudioProjects/Myproject/app/src/main/res/layout/fragment_accountfragment.xml" value="0.1933876811594203" />
+        <entry key="..\:/Users/anura/AndroidStudioProjects/Myproject/app/src/main/res/layout/fragment_cartfragment.xml" value="0.1933876811594203" />
+        <entry key="..\:/Users/anura/AndroidStudioProjects/Myproject/app/src/main/res/layout/fragment_home.xml" value="0.1933876811594203" />
+        <entry key="..\:/Users/anura/AndroidStudioProjects/Myproject/app/src/main/res/menu/bottomview.xml" value="0.25" />
       </map>
     </option>
   </component>

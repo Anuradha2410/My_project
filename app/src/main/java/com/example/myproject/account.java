@@ -1,5 +1,6 @@
 package com.example.myproject;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -9,6 +10,15 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.myproject.databinding.ActivityAccountBinding;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 
 import java.util.ArrayList;
@@ -16,58 +26,79 @@ import java.util.ArrayList;
 
 public class account extends AppCompatActivity {
     ActivityAccountBinding binding;
+    FirebaseAuth auth;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding=ActivityAccountBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        DBHelper db;
-        ArrayList<EditText> arrayList=new ArrayList();
-        arrayList.add(binding.editTextTextPersonName);
-        arrayList.add(binding.editTextTextPersonName2);
-        arrayList.add(binding.editTextTextEmailAddress);
-        arrayList.add(binding.editTextPhone2);
 
-        db = new DBHelper(this);
+
+        auth=FirebaseAuth.getInstance();
+
+
+
         binding.button.setOnClickListener(view -> {
+            String pass=binding.editTextTextPassword2.getText().toString().trim();
+            String email=binding.editTextTextEmailAddress.getText().toString().trim();
+            String name=binding.editTextTextPersonName.getText().toString().trim();
+            long phone=Long.parseLong(binding.editTextPhone2.getText().toString());
 
-            for(EditText e:arrayList){
-
-                String text=e.getText().toString().trim();
-                if(text.length()==0){
-                    Toast.makeText(this, "Data required in all field", Toast.LENGTH_SHORT).show();
+                if(email.isEmpty()){
+                    binding.editTextTextEmailAddress.setError("Email is required");
+                    binding.editTextTextEmailAddress.requestFocus();
                 }
-                else if(binding.editTextPhone2.getId()==e.getId()){
+                if(pass.isEmpty()){
+                    binding.editTextTextPassword2.setError("Password is required");
+                    binding.editTextTextPassword2.requestFocus();
 
-                    if(text.length()!=10){
-                        e.setError("Invalid number");
+                }
+                if(name.isEmpty()){
+                    binding.editTextTextPersonName.setError("Name is required");
+                    binding.editTextTextPersonName.requestFocus();
+                }
+                if(String.valueOf(phone).isEmpty()){
+                    binding.editTextPhone2.setError("Phone is required");
+                    binding.editTextPhone2.requestFocus();
+                }
+
+                if(String.valueOf(phone).length()!=10){
+                    binding.editTextPhone2.setError("Invalid number");
+                }
+
+                if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+                     binding.editTextTextEmailAddress.setError("Invalid email address");
+                }
+                if(pass.length()<6){
+                    binding.editTextTextPassword2.setError("Password must be atleast of 6 letters");
+                }
+                auth.createUserWithEmailAndPassword(email,pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if(task.isSuccessful()){
+                            user u=new user(
+                                    name,
+                                    email,
+                                    pass,
+                                    phone
+                            );
+                            FirebaseDatabase.getInstance().getReference("user_info").child(String.valueOf(phone)).setValue(u);
+                            finish();
+                            startActivity(new Intent(getApplicationContext(),Menu.class));
+                        }
+                        else{
+
+                            Toast.makeText(account.this, "Error in signup", Toast.LENGTH_SHORT).show();
+                        }
                     }
-                }
-                else if(binding.editTextTextEmailAddress.getId()==e.getId()){
-
-                    if(!Patterns.EMAIL_ADDRESS.matcher(e.getText()).matches()){
-                        e.setError("Invalid email address");
-                    }
-                }
-
-            }
-
-            String username = binding.editTextTextPersonName.getText().toString();
-            String password = binding.editTextTextPassword2.getText().toString();
-            String address = binding.editTextTextPersonName2.getText().toString();
-            long contactno = Long.parseLong(binding.editTextPhone2.getText().toString());
-            String email = binding.editTextTextEmailAddress.getText().toString();
-
-            Boolean insert = db.insertuser(username,password,address,email,contactno);
-            if(insert==true) {
-                Toast.makeText(this, "Registered successfully", Toast.LENGTH_SHORT).show();
-                Intent in =new Intent(getApplicationContext(),MainActivity.class);
-                startActivity(in);
-            }
-            else {
-                Toast.makeText(this, "Registered failed", Toast.LENGTH_SHORT).show();
-            }
-
+                });
+        });
+        binding.textView5.setOnClickListener(view -> {
+            finish();
+            startActivity(new Intent(account.this,MainActivity.class));
         });
     }
 }
