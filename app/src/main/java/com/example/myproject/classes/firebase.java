@@ -1,6 +1,4 @@
-package com.example.myproject;
-
-import android.widget.Toast;
+package com.example.myproject.classes;
 
 import androidx.annotation.NonNull;
 
@@ -15,18 +13,21 @@ import java.util.List;
 
 public class firebase {
     FirebaseDatabase firebaseDatabase;
-    DatabaseReference databaseReference;
+    DatabaseReference databaseReference,databaseReference1;
     List<foodinfo> list= new ArrayList<>();
+
     public interface datastatus {
         void dataIsloaded(List<String> key,List<foodinfo> finfo);
-        void dataisInserted();
-        void dataIsupdated();
-        void dataIsDeleted();
+
+//        void dataisInserted();
+//        void dataIsupdated();
+//        void dataIsDeleted();
 
     }
     public firebase() {
         firebaseDatabase=FirebaseDatabase.getInstance();
         databaseReference=firebaseDatabase.getReference("detail");
+        databaseReference1=FirebaseDatabase.getInstance().getReference("user_info");
     }
 
     public void readdata(final datastatus ds){

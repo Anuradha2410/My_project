@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
         super.onStart();
         if (auth.getCurrentUser() != null) {
             finish();
+
             startActivity(new Intent(this,Menu.class));
         }
 

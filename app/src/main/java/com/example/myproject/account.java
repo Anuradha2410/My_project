@@ -6,28 +6,22 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Patterns;
-import android.widget.EditText;
 import android.widget.Toast;
+
+import com.example.myproject.classes.user;
 
 import com.example.myproject.databinding.ActivityAccountBinding;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-
-
-import java.util.ArrayList;
 
 
 public class account extends AppCompatActivity {
     ActivityAccountBinding binding;
     FirebaseAuth auth;
-
+    public  static  String name1="";
 
 
     @Override
@@ -85,9 +79,12 @@ public class account extends AppCompatActivity {
                                     pass,
                                     phone
                             );
-                            FirebaseDatabase.getInstance().getReference("user_info").child(String.valueOf(phone)).setValue(u);
+                            FirebaseDatabase.getInstance().getReference("user_info").child(FirebaseAuth.getInstance().getUid()).setValue(u);
                             finish();
-                            startActivity(new Intent(getApplicationContext(),Menu.class));
+                            Intent intent=new Intent(getApplicationContext(),Menu.class);
+//                            intent.putExtra("phone",(email));
+
+                            startActivity(intent);
                         }
                         else{
 

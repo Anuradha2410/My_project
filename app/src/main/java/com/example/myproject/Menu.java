@@ -2,11 +2,12 @@ package com.example.myproject;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
 
+import com.example.myproject.Fragments.Accountfragment;
+import com.example.myproject.Fragments.Cartfragment;
+import com.example.myproject.Fragments.HomeFragment;
 import com.example.myproject.databinding.ActivityMenuBinding;
 import com.google.android.material.navigation.NavigationBarView;
 
@@ -22,6 +23,7 @@ Accountfragment accountfragment=new Accountfragment();
         super.onCreate(savedInstanceState);
         binding = ActivityMenuBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
         getSupportFragmentManager().beginTransaction().replace(R.id.frame, homeFragment).commit();
 
         binding.bottomNav.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
@@ -29,9 +31,14 @@ Accountfragment accountfragment=new Accountfragment();
             public boolean onNavigationItemSelected(MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.home:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.frame, homeFragment).commit();
+                        if(savedInstanceState==null){
+                            getSupportFragmentManager().beginTransaction().replace(R.id.frame, homeFragment).commit();
+                        }
+                        else {
+                            getFragmentManager().findFragmentById(homeFragment.getId());
+                        }
                         break;
-                    case R.id.cart:
+                    case R.id.profile:
                         getSupportFragmentManager().beginTransaction().replace(R.id.frame, cart).commit();
                         break;
                     case R.id.my_account:
