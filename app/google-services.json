@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "999989443639",
-    "project_id": "my-project-dcd13",
-    "storage_bucket": "my-project-dcd13.appspot.com"
+    "project_number": "136813915412",
+    "project_id": "my-project1-b3294",
+    "storage_bucket": "my-project1-b3294.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:999989443639:android:464120f5284af2045ad3b2",
+        "mobilesdk_app_id": "1:136813915412:android:0f19824179f57b3a57a601",
         "android_client_info": {
           "package_name": "com.example.myproject"
         }
       },
       "oauth_client": [
         {
-          "client_id": "999989443639-0a7co25dqqckr58bptvaqi09tp6hsaju.apps.googleusercontent.com",
+          "client_id": "136813915412-l62aq19ql0bu61dofs4jrc6e8sfel5pr.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyC5OvG3OuRcY3vDmA-1_7UvZWkA2jaDZW8"
+          "current_key": "AIzaSyDqx1vwUOoc1HY6aX-n45tibGE6ksV3WWE"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "999989443639-0a7co25dqqckr58bptvaqi09tp6hsaju.apps.googleusercontent.com",
+              "client_id": "136813915412-l62aq19ql0bu61dofs4jrc6e8sfel5pr.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
