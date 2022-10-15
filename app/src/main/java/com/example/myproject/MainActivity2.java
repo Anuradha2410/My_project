@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.example.myproject.Adapters.itemadapter;
+import com.example.myproject.Fragments.HomeFragment;
 import com.example.myproject.classes.itemcart;
 import com.example.myproject.classes.itemlist;
 import com.google.firebase.database.DataSnapshot;
@@ -43,8 +44,9 @@ RecyclerView recyclerView;
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
         if(item.getTitle().toString().equals("Cart")) {
-            Intent intent=new Intent(getApplicationContext(),cart.class);
+            Intent intent=new Intent(getApplicationContext(), cart.class);
 //            Toast.makeText(getContext(), itemcarts.toString(), Toast.LENGTH_SHORT).show();
+            intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
             intent.putExtra("list",(Serializable) itemcarts);
 //            Toast.makeText(getContext(), itemcarts.toString(), Toast.LENGTH_SHORT).show();
             startActivity(intent);
@@ -69,7 +71,7 @@ RecyclerView recyclerView;
             pizza.add(new itemlist(R.drawable.pop_3,"farmhouse Pizza","200",""));
             pizza.add(new itemlist(R.drawable.pop_3,"panner special Pizza","270",""));
             pizza.add(new itemlist(R.drawable.pop_3,"crisp capsicum and tomato Pizza","350",""));
-            pizza.add(new itemlist(R.drawable.pop_3,"vegitable loaded Pizza","250",""));
+            pizza.add(new itemlist(R.drawable.pop_3,"vegetable loaded Pizza","250",""));
             pizza.add(new itemlist(R.drawable.pop_3,"Mexican green wave Pizza","450",""));
             itemadapter iadapter=new itemadapter(this,pizza,this);
             recyclerView.setAdapter(iadapter);

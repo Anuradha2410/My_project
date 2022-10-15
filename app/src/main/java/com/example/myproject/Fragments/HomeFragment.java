@@ -77,11 +77,22 @@ public class HomeFragment extends Fragment implements recyclerviewselector {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 1) {
             if(resultCode == RESULT_OK) {
-                String strEditText = data.getStringExtra("posi");
-                int check=Integer.parseInt(strEditText);
-                if(itemcarts.size()>check&&check>-1)
+                List<itemcart> strEditText = (List<itemcart>) data.getSerializableExtra("posi");
+                //String value = data.getStringExtra("var");
+                for(itemcart it:strEditText)
                 {
-                    itemcarts.remove(check);
+//                    Toast.makeText(getContext(), it.getPos(), Toast.LENGTH_SHORT).show();
+
+                    int check=Integer.parseInt(it.getPos());
+                    if(it.getQuan().equals("0")){
+                        itemcarts.remove(check);
+                    }
+                     else if(itemcarts.size()>check&&check>-1)
+                    {
+                        itemcarts.remove(check);
+                        itemcarts.add(check,new itemcart(it.getName(),it.getPrice(),it.getQuan(),it.getImage()));
+                    }
+
                 }
 
             }
@@ -109,6 +120,8 @@ public class HomeFragment extends Fragment implements recyclerviewselector {
         imageView.setOnClickListener(view1 -> {
             FirebaseAuth.getInstance().signOut();
         });
+
+
         List<category> cate=new ArrayList<>();
         cate.add(new category("Pizza",R.drawable.cat_1));
         cate.add(new category("Burger",R.drawable.cat_2));
@@ -117,10 +130,6 @@ public class HomeFragment extends Fragment implements recyclerviewselector {
         cate.add(new category("Dessert",R.drawable.cat_5));
 
 
-
-
-//        cate.add(new category("Beverage",R.drawable.bev));
-//             else {
         relativeLayout=view.findViewById(R.id.search);
         relativeLayout.setOnClickListener(view1 -> {
             Intent intent=new Intent(getContext(), search.class);
@@ -128,8 +137,7 @@ public class HomeFragment extends Fragment implements recyclerviewselector {
             startActivity(intent);
         });
 
-//
-//                }
+
 
 
         recyclerView=view.findViewById(R.id.recyclerView);
@@ -139,9 +147,7 @@ public class HomeFragment extends Fragment implements recyclerviewselector {
         recyclerView.setLayoutManager(manager);
         recyclerView1=view.findViewById(R.id.recyclerView2);
         itemcarts=new ArrayList<>();
-        recyclerView.setOnClickListener(view1 -> {
-            Toast.makeText(getContext(), "ajwnfd", Toast.LENGTH_SHORT).show();
-        });
+
 
         DatabaseReference databaseReference=FirebaseDatabase.getInstance().getReference("user_info").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("uname");
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -176,8 +182,8 @@ public class HomeFragment extends Fragment implements recyclerviewselector {
     public void onitemSelect(String postion) {
             Intent intent=new Intent(getContext(), MainActivity2.class);
             intent.putExtra("pos",postion);
-
             startActivity(intent);
+
         Toast.makeText(getContext(), postion, Toast.LENGTH_SHORT).show();
 
 
@@ -232,7 +238,6 @@ public class HomeFragment extends Fragment implements recyclerviewselector {
                         price=snapshot.child("price").getValue(String.class);
                         name=snapshot.child("name").getValue(String.class);
                         itemcarts.add( new itemcart(name,price,String.valueOf(var),image));
-
 
 
                     }

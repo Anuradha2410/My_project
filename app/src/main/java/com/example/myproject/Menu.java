@@ -31,12 +31,7 @@ Accountfragment accountfragment=new Accountfragment();
             public boolean onNavigationItemSelected(MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.home:
-                        if(savedInstanceState==null){
-                            getSupportFragmentManager().beginTransaction().replace(R.id.frame, homeFragment).commit();
-                        }
-                        else {
-                            getFragmentManager().findFragmentById(homeFragment.getId());
-                        }
+                        getSupportFragmentManager().beginTransaction().replace(R.id.frame, homeFragment).commit();
                         break;
                     case R.id.profile:
                         getSupportFragmentManager().beginTransaction().replace(R.id.frame, cart).commit();

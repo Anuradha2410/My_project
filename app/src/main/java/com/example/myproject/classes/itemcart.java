@@ -4,8 +4,9 @@ import java.io.Serializable;
 
 public class itemcart implements Serializable {
     String quan;
-    String name,price;
+    String name,price,pos="-1";
     int image;
+
 
     public itemcart(String name, String price, String quan, int image) {
         this.name = name;
@@ -14,7 +15,21 @@ public class itemcart implements Serializable {
         this.image = image;
     }
 
+    public String getPos() {
+        return pos;
+    }
 
+    public void setPos(String pos) {
+        this.pos = pos;
+    }
+
+    public itemcart(String name, String price, String quan,int image, String pos) {
+        this.quan = quan;
+        this.name = name;
+        this.price = price;
+        this.pos = pos;
+        this.image = image;
+    }
 
     public String getName() {
         return name;
